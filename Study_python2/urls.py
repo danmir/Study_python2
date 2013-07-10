@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     (r'^$', myHomePageView),
     (r'^time/plus/(\d{1,2})/$', hoursAhead),
     (r'^ua/$', ua_display),
+    (r'^display_meta/$', display_meta),
     # Examples:
     # url(r'^$', 'Study_python2.views.home', name='home'),
     # url(r'^Study_python2/', include('Study_python2.foo.urls')),

@@ -31,3 +31,11 @@ def hoursAhead(request, offset):
 def ua_display(request):
     ua = request.META.get('HTTP_USER_AGENT', 'unknown')
     return HttpResponse('Ваш броузер {}'.format(ua))
+
+def display_meta(request):
+    values = request.META.items()
+    values.sort()
+    html = []
+    for key, value in values:
+        html.append('<tr><td>{}</td><td>{}</td></tr>'.format(key, value))
+    return HttpResponse('<table>%s</table>' % '\n'.join(html))
