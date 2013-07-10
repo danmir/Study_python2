@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
 from django.conf.urls import patterns, include, url
 from Study_python2.views import *
+from books import views
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -12,6 +14,9 @@ urlpatterns = patterns('',
     (r'^time/plus/(\d{1,2})/$', hoursAhead),
     (r'^ua/$', ua_display),
     (r'^display_meta/$', display_meta),
+    #Форма поиска
+    (r'^search-form/$', views.search_form),
+    (r'^search/$', views.search),
     # Examples:
     # url(r'^$', 'Study_python2.views.home', name='home'),
     # url(r'^Study_python2/', include('Study_python2.foo.urls')),
