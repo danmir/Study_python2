@@ -15,7 +15,6 @@ urlpatterns = patterns('',
     (r'^ua/$', ua_display),
     (r'^display_meta/$', display_meta),
     #Форма поиска
-    (r'^search-form/$', views.search_form),
     (r'^search/$', views.search),
     # Examples:
     # url(r'^$', 'Study_python2.views.home', name='home'),

@@ -4,7 +4,10 @@
     <title>Поиск</title>
 </head>
 <body>
-    <form action="/search/" method="get">
+    {% if error %}
+        <p style="color: orangered;">Введите поисковый запрос</p>
+    {% endif %}
+    <form action="" method="get">
         <input type="text" name = "q">
         <input type="submit" value="Найти">
     </form>
