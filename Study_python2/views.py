@@ -27,3 +27,7 @@ def hoursAhead(request, offset):
     #assert False
     html = "<html><body>Через {} часов будет {}.</body></html>".format(offset, dt)
     return HttpResponse(html)
+
+def ua_display(request):
+    ua = request.META.get('HTTP_USER_AGENT', 'unknown')
+    return HttpResponse('Ваш броузер {}'.format(ua))
