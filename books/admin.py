@@ -14,8 +14,9 @@ class BookAdmin(admin.ModelAdmin):
     ordering = ('-publication_date',)  #'-' В порядке убывания
     #Порядок следования в форме редактирования
     fields = ('title', 'authors', 'publisher', 'publication_date')
+    #Только для полей Manytomany удобное добавление
     filter_horizontal = ('authors',)
 
 admin.site.register(Publisher)
 admin.site.register(Author, AuthorAdmin)
-admin.site.register(Book)
+admin.site.register(Book, BookAdmin)
