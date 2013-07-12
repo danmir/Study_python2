@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Свяжитесь с нами</title>
+</head>
+<body>
+    <h1>Свяжитесь с нами</h1>
+    {% if form.errors %}
+        Исправьте {{ form.errors }}
+    {% endif %}
+
+    <form action="" method="post">
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Отправить">
+    </form>
+</body>
+</html>
