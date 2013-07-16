@@ -3,8 +3,8 @@ __author__ = 'apple'
 from django import forms
 
 class ContactForm(forms.Form):
-    subject = forms.CharField()
-    email = forms.EmailField(required=False)
+    subject = forms.CharField(max_length=100)
+    email = forms.EmailField(required=False, label='Ваш e-mail')
     message = forms.CharField()
 
     #Вызывается после стандартных проверок

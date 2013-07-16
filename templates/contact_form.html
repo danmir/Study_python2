@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+<style type="text/css">
+    ul.errorlist {
+        margin: 0;
+        padding: 0;
+    }
+    .errorlist li {
+        background-color: darkred;
+        color: white;
+        display: block;
+        font-size: 10px;
+        margin: 0 0 3px;
+        padding: 4px 5px;
+    }
+</style>
 <html>
 <head>
     <title>Свяжитесь с нами</title>
@@ -10,9 +24,24 @@
     {% endif %}
 
     <form action="" method="post">
-        <table>
-            {{ form.as_table }}
-        </table>
+        <div class="field">
+            {{ form.subject.errors }}
+            <label for="id_subject">Тема</label>
+            {{ form.subject }}
+        </div>
+
+        <div class="field">
+            {{ form.email.errors }}
+            <label for="id_email">Ваш Email</label>
+            {{ form.email }}
+        </div>
+
+        <div class="field">
+            {{ form.message.errors }}
+            <label for="id_message">Сообщение</label>
+            {{ form.message }}
+        </div>
+
         <input type="submit" value="Отправить">
     </form>
 </body>
