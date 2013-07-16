@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from Study_python2.views import *
 from books import views
-from contact import contact_views
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -18,7 +18,9 @@ urlpatterns = patterns('',
     #Форма поиска
     (r'^search/$', views.search),
     #Контактная форма
-    (r'^contact/$', contact_views.contact),
+    (r'^contact/$', 'contact.contact_views.contact'),
+    #Именованные группы
+    (r'^problem/(?P<num>\d{1,2})/$', problem),
     # Examples:
     # url(r'^$', 'Study_python2.views.home', name='home'),
     # url(r'^Study_python2/', include('Study_python2.foo.urls')),

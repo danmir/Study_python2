@@ -39,3 +39,6 @@ def display_meta(request):
     for key, value in values:
         html.append('<tr><td>{}</td><td>{}</td></tr>'.format(key, value))
     return HttpResponse('<table>%s</table>' % '\n'.join(html))
+
+def problem(request, num):
+    return HttpResponse('Id задлачи {}'.format(num))
