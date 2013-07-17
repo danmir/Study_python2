@@ -27,11 +27,18 @@ class Author(models.Model):
     def __unicode__(self):
         return u'{} {}'.format(self.first_name, self.last_name)
 
+#Добавляем методы в менеджер
+class BookManager(models.Manager):
+    def title_count(self, keyword):
+        return self.filter(title__icontains=keyword).count()
+
 class Book(models.Model):
     title = models.CharField(max_length=100)
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
     publication_date = models.DateField()
+    #Заменяем manager по умолчанию
+    object = BookManager()
 
     def __unicode__(self):
         return self.title
