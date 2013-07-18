@@ -32,6 +32,9 @@ urlpatterns = patterns('',
     (r'^problem/(?P<num>\d{1,2})/$', problem),
     #Автоматические страницы
     url(r'^publishers/$', PublisherList.as_view()),
+    #Авторизация
+    (r'^session/$', session),
+    (r'^sessioncheck/$', checkSession),
     # Examples:
     # url(r'^$', 'Study_python2.views.home', name='home'),
     # url(r'^Study_python2/', include('Study_python2.foo.urls')),

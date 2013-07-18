@@ -49,3 +49,10 @@ def problem(request, num):
 class PublisherList(ListView):
     model = Publisher
     template_name = 'publisher_list_page.html'
+
+def session(request):
+    request.session["fav_color"] = "blue"
+    return HttpResponse('All done')
+
+def checkSession(request):
+    return HttpResponse(request.session['fav_color'])
