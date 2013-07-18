@@ -8,6 +8,8 @@ from books import views
 from books.models import Publisher
 #Для Generetic view
 from views import PublisherList
+#Для login logout
+from django.contrib.auth.views import login, logout
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -35,6 +37,8 @@ urlpatterns = patterns('',
     #Авторизация
     (r'^session/$', session),
     (r'^sessioncheck/$', checkSession),
+    (r'^login/$', login, {'template_name': 'login.html'}),
+    (r'^logout/$', logout, {'template_name': 'logout.html'}),
     # Examples:
     # url(r'^$', 'Study_python2.views.home', name='home'),
     # url(r'^Study_python2/', include('Study_python2.foo.urls')),

@@ -57,12 +57,10 @@ def session(request):
     user = auth.authenticate(username = username, password = '1')
     if user is not None and user.is_active:
         auth.login(request, user)
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/sucsess')
     else:
         return HttpResponseRedirect('/invalid')
 
-    #request.session["fav_color"] = "blue"
-    #return HttpResponse('All done')
-
 def checkSession(request):
+    request.session["fav_color"] = "blue"
     return HttpResponse(request.session['fav_color'], request.user)
