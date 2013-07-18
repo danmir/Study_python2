@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import render_to_response
@@ -7,6 +7,8 @@ import datetime
 #Для Generetic view
 from django.views.generic import ListView
 from books.models import Publisher
+#Для авторизации
+from django.contrib import auth
 
 __author__ = 'apple'
 
@@ -51,8 +53,16 @@ class PublisherList(ListView):
     template_name = 'publisher_list_page.html'
 
 def session(request):
-    request.session["fav_color"] = "blue"
-    return HttpResponse('All done')
+    username = request.GET.get('u', '')
+    user = auth.authenticate(username = username, password = '1')
+    if user is not None and user.is_active:
+        auth.login(request, user)
+        return HttpResponseRedirect('/')
+    else:
+        return HttpResponseRedirect('/invalid')
+
+    #request.session["fav_color"] = "blue"
+    #return HttpResponse('All done')
 
 def checkSession(request):
-    return HttpResponse(request.session['fav_color'])
+    return HttpResponse(request.session['fav_color'], request.user)
