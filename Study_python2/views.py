@@ -4,6 +4,9 @@ from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import render_to_response
 import datetime
+#Для Generetic view
+from django.views.generic import ListView
+from books.models import Publisher
 
 __author__ = 'apple'
 
@@ -42,3 +45,7 @@ def display_meta(request):
 
 def problem(request, num):
     return HttpResponse('Id задлачи {}'.format(num))
+
+class PublisherList(ListView):
+    model = Publisher
+    template_name = 'publisher_list_page.html'

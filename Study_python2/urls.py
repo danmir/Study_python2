@@ -3,11 +3,20 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from Study_python2.views import *
+from django.views.generic import list
 from books import views
+from books.models import Publisher
+#Для Generetic view
+from views import PublisherList
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+
+publisher_info = {
+    'queryset': Publisher.objects.all(),
+    'template_name': 'publisher_list_page.html',
+}
 
 urlpatterns = patterns('',
     (r'^hello/$', hello),
@@ -21,6 +30,8 @@ urlpatterns = patterns('',
     (r'^contact/$', 'contact.contact_views.contact'),
     #Именованные группы
     (r'^problem/(?P<num>\d{1,2})/$', problem),
+    #Автоматические страницы
+    url(r'^publishers/$', PublisherList.as_view()),
     # Examples:
     # url(r'^$', 'Study_python2.views.home', name='home'),
     # url(r'^Study_python2/', include('Study_python2.foo.urls')),
