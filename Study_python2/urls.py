@@ -39,6 +39,7 @@ urlpatterns = patterns('',
     (r'^sessioncheck/$', checkSession),
     (r'^login/$', login, {'template_name': 'login.html'}),
     (r'^logout/$', logout, {'template_name': 'logout.html'}),
+    (r'^secretview/$', secretView),
     # Examples:
     # url(r'^$', 'Study_python2.views.home', name='home'),
     # url(r'^Study_python2/', include('Study_python2.foo.urls')),

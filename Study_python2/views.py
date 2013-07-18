@@ -64,3 +64,10 @@ def session(request):
 def checkSession(request):
     request.session["fav_color"] = "blue"
     return HttpResponse(request.session['fav_color'], request.user)
+
+def secretView(request):
+    if not request.user.is_authenticated():
+        #Возвращаем пользователя на эту страницу после авторизации
+        return HttpResponseRedirect('/login/?next={}'.format(request.path))
+    else:
+        return HttpResponse('This is my secret')
