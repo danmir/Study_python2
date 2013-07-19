@@ -34,12 +34,13 @@ urlpatterns = patterns('',
     (r'^problem/(?P<num>\d{1,2})/$', problem),
     #Автоматические страницы
     url(r'^publishers/$', PublisherList.as_view()),
-    #Авторизация
+    #Авторизация и регистрация
     (r'^session/$', session),
     (r'^sessioncheck/$', checkSession),
     (r'^login/$', login, {'template_name': 'login.html'}),
     (r'^logout/$', logout, {'template_name': 'logout.html'}),
     (r'^secretview/$', secretView),
+    (r'^register/$', register),
     # Examples:
     # url(r'^$', 'Study_python2.views.home', name='home'),
     # url(r'^Study_python2/', include('Study_python2.foo.urls')),

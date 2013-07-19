@@ -9,6 +9,8 @@ from django.views.generic import ListView
 from books.models import Publisher
 #Для авторизации
 from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
+from django.template import RequestContext
 
 __author__ = 'apple'
 
@@ -52,6 +54,7 @@ class PublisherList(ListView):
     model = Publisher
     template_name = 'publisher_list_page.html'
 
+#Сессии Авторизация Регистрация
 def session(request):
     username = request.GET.get('u', '')
     user = auth.authenticate(username = username, password = '1')
@@ -71,3 +74,13 @@ def secretView(request):
         return HttpResponseRedirect('/login/?next={}'.format(request.path))
     else:
         return HttpResponse('This is my secret')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = UserCreationForm()
+    return render_to_response('register.html', {'form': form}, context_instance=RequestContext(request))
