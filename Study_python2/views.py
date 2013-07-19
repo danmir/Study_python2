@@ -11,6 +11,8 @@ from books.models import Publisher
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from django.template import RequestContext
+#Сообщения
+from django.contrib import messages
 
 __author__ = 'apple'
 
@@ -84,3 +86,7 @@ def register(request):
     else:
         form = UserCreationForm()
     return render_to_response('register.html', {'form': form}, context_instance=RequestContext(request))
+
+def test_message(request):
+    messages.add_message(request, messages.INFO, 'Hello people!')
+    return render_to_response('test_message.html', context_instance=RequestContext(request))
